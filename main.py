@@ -1,4 +1,3 @@
-import uvicorn
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException
@@ -69,7 +68,3 @@ def create_meal_for_user(
     db: Session = Depends(get_db),
 ):
     return crud.create_user_meal(db=db, meal=meal, user_id=user_id, recipe_id=recipe_id)
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
