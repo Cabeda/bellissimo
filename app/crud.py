@@ -30,6 +30,10 @@ def create_recipe(db: Session, recipe: schemas.RecipeBase, user_id: int):
     return db_recipe
 
 
+def delete_recipe(db: Session, recipe_id: int):
+    db.query(models.Recipe).filter(models.Recipe.id == recipe_id).delete()
+
+
 def get_meals(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Meal).offset(skip).limit(limit).all()
 
