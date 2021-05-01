@@ -16,7 +16,7 @@ services:
     depends_on:
         - db
     env_file:
-        - .dev.env
+        - .env
     ports:
         - "80:80"
       
