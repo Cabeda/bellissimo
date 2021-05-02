@@ -32,6 +32,7 @@ def create_recipe(db: Session, recipe: schemas.RecipeBase, user_id: int):
 
 def delete_recipe(db: Session, recipe_id: int):
     db.query(models.Recipe).filter(models.Recipe.id == recipe_id).delete()
+    db.commit()
 
 
 def get_meals(db: Session, skip: int = 0, limit: int = 100):

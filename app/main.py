@@ -154,6 +154,34 @@ def read_recipe(recipe_id: int, db: Session = Depends(get_db)):
     return db_recipe
 
 
+@app.delete("/recipes/{recipe_id}")
+async def delete_recipe(
+    recipe_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
+):
+    recipe = crud.get_recipe(db, recipe_id)
+    user = await get_current_user(token, db)
+
+    if recipe.user_id != user.id:
+        raise HTTPException(status_code=404, detail="Recipe doesn't belong to user")
+
+    if recipe is None:
+        raise HTTPException(status_code=404, detail="Recipe not found")
+
+    crud.delete_recipe(db, recipe_id)
+
+
+@app.delete("/users/{user_id}")
+async def delete_user(
+    user_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token, db)
+
+    if user_id != user.id:
+        raise HTTPException(status_code=404, detail="User isn't the same as the logged user")
+
+    auth.delete_user(db, user_id)
+
+
 # @app.post("/users/{user_id}/meal/", response_model=schemas.Meal)
 # def create_meal_for_user(
 #     user_id: int,

@@ -7,9 +7,9 @@ DB_URL = getenv("DATABASE_URL")
 
 # Fix needed as heroku returns DB starting with postgres://
 if DB_URL.startswith("postgres://"):
-    uri = DB_URL.replace("postgres://", "postgresql://", 1)
+    DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
 
-engine = create_engine(uri)
+engine = create_engine(DB_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()

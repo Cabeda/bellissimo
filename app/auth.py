@@ -4,6 +4,8 @@ from typing import Optional
 from sqlalchemy.orm import Session
 from os import getenv
 
+from sqlalchemy.sql.functions import user
+
 from app.utils import Utils
 from app import models, schemas
 
@@ -73,3 +75,8 @@ def update_user(db: Session, user: schemas.User):
     db.commit()
     db.refresh(old_user)
     return old_user
+
+
+def delete_user(db: Session, user_id: int):
+    db.query(models.User).filter(models.User.id == user_id).delete()
+    db.commit()
