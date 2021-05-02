@@ -21,6 +21,7 @@ def create_recipe(db: Session, recipe: schemas.RecipeBase, user_id: int):
         duration_minutes=recipe.duration_minutes,
         servings=recipe.servings,
         difficulty=recipe.difficulty,
+        steps=recipe.steps,
         user_id=user_id,
     )
 

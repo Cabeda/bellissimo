@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date, ARRAY
 from sqlalchemy.orm import relationship
 
 from app.database import Base
@@ -26,9 +26,9 @@ class Recipe(Base):
     name = Column(String)
     link = Column(String)
     description = Column(String)
-    ingredients = Column(String)
-    steps = Column(String)
-    tags = Column(String)
+    ingredients = Column(ARRAY(String))
+    steps = Column(ARRAY(String))
+    tags = Column(ARRAY(String))
     duration_minutes = Column(Integer)
     servings = Column(String)
     difficulty = Column(String)

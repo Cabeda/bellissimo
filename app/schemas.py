@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Set
 
 from pydantic import BaseModel
 
@@ -7,9 +7,9 @@ class RecipeBase(BaseModel):
     link: Optional[str] = None
     name: Optional[str] = None
     description: Optional[str] = None
-    steps: Optional[str] = None
-    ingredients: Optional[str] = None
-    tags: Optional[str] = None
+    steps: Set[str] = None
+    ingredients: Set[str] = None
+    tags: Set[str] = None
     duration_minutes: Optional[int] = None
     servings: Optional[str] = None
     difficulty: Optional[str] = None
