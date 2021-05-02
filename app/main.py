@@ -8,8 +8,11 @@ from jose import jwt
 from jose.exceptions import JWKError
 from sqlalchemy.orm import Session
 
-from app import crud, models, schemas, auth
-from app.database import SessionLocal, engine
+import crud
+import models
+import schemas
+import auth
+from database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
