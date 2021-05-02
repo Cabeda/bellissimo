@@ -4,9 +4,8 @@ from typing import Optional
 from sqlalchemy.orm import Session
 from os import getenv
 
-from utils import Utils
-import models
-import schemas
+from app.utils import Utils
+from app import models, schemas
 
 SECRET_KEY: str = getenv("SECRET_KEY")
 ALGORITHM: str = getenv("ALGORITHM")

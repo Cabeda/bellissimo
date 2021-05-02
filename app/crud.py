@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 
-import models
-import schemas
+from app import models, schemas
 
 
 def get_recipes(db: Session, skip: int = 0, limit: int = 100):
