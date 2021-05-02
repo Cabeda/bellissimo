@@ -1,8 +1,13 @@
-# Belissimo
+# Bellissimo - A recipe book API
 
-## A recipe book API
+This projects holds a REST API built with fastapi for the recipe book app.
 
-### How to install/run project
+## Local Development
+
+1. Install docker
+2. Run `docker compose up`
+3. Go to http://localhost:8000/docs
+## Local Development (without docker)
 
 1. Create a new .env file and add the following tokens
 
